@@ -4,7 +4,9 @@ pipeline {
     stages {
         stage('build') {
             steps {
-                echo 'deploying the build'
+                sh """
+                    docker-compose -f docker-compose.yml -f docker-compose.dev.yml up -d --build
+                """
             }
         }
 
